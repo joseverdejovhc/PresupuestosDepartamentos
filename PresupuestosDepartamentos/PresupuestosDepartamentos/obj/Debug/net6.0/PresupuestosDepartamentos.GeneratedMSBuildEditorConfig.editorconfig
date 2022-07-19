@@ -1,0 +1,68 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PresupuestosDepartamentos
+build_property.RootNamespace = PresupuestosDepartamentos
+build_property.ProjectDir = C:\Projects\Git\PresupuestosDepartamentos\PresupuestosDepartamentos\PresupuestosDepartamentos\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Projects\Git\PresupuestosDepartamentos\PresupuestosDepartamentos\PresupuestosDepartamentos
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Configuracion/CentrosCoste.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZmlndXJhY2lvblxDZW50cm9zQ29zdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Configuracion/Cuentas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZmlndXJhY2lvblxDdWVudGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Configuracion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZmlndXJhY2lvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Configuracion/Naturalezas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZmlndXJhY2lvblxOYXR1cmFsZXphcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Configuracion/Subnaturalezas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZmlndXJhY2lvblxTdWJuYXR1cmFsZXphcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Home/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc3Vhcmlvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Git/PresupuestosDepartamentos/PresupuestosDepartamentos/PresupuestosDepartamentos/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ak77r1somn

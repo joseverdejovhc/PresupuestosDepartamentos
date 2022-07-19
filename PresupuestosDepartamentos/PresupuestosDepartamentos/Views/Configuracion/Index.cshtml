@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Configuracion";
+}
+
+<div class="row mt-4">
+    <div class="col-md-12">
+    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+        <li class="nav-item nav-item-tabs" role="presentation">
+            <a class="nav-link nav-link-tabs active" id="centrocoste-tab" data-toggle="tab" data-bs-toggle="pill" data-bs-target="#centrocoste" type="button" role="tab" aria-controls="home" aria-selected="true">
+                Centros de Coste
+            </a>
+        </li>
+        <li class="nav-item nav-item-tabs" role="presentation">
+            <a class="nav-link nav-link-tabs" id="naturalezas-tab" data-toggle="tab" data-bs-toggle="pill" data-bs-target="#naturalezas" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                Naturalezas
+            </a>
+        </li>
+        <li class="nav-item nav-item-tabs" role="presentation">
+            <a class="nav-link nav-link-tabs" id="cuentas-tab" data-toggle="tab" data-bs-toggle="pill" data-bs-target="#cuentas" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                Cuentas Contables
+            </a>
+        </li>
+        <li class="nav-item nav-item-tabs" role="presentation">
+            <a class="nav-link nav-link-tabs" id="subnaturalezas-tab" data-toggle="tab" data-bs-toggle="pill" data-bs-target="#comment-tab" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                Subnaturalezas
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+<div class="tab-content mb-5 mt-3" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="centrocoste" role="tabpanel" aria-labelledby="centrocoste-tab">
+        <partial name="CentrosCoste" />
+    </div>
+    <div class="tab-pane fade" id="naturalezas" role="tabpanel" aria-labelledby="naturalezas-tab">
+        <partial name="Naturalezas" />
+    </div>
+    <div class="tab-pane fade" id="cuentas" role="tabpanel" aria-labelledby="cuentas-tab">
+        <partial name="Cuentas" />
+    </div>
+    <div class="tab-pane fade" id="comment-tab" role="tabpanel" aria-labelledby="subnaturalezas-tab">
+        <partial name="Subnaturalezas" />
+    </div>
+
+</div>
+
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+    modulo_centro_coste.init();
+    
+</script>
+}
+

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PresupuestosDepartamentos.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css" />
+    <link href="~/lib/multi-select/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" alt="Presupuestos" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Presupuesto"><i class="fa fa-money-bills"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cierre"><i class="fa fa-door-closed"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Configuracion"><i class="fa fa-gears"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Explotacion"><i class="fa fa-rocket"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Extracontables"><i class="fa fa-database"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Usuarios"><i class="fa fa-user"></i></a>
+                        </li>
+                    </ul>
+                    @{
+                        string titulo = ViewData["Title"].ToString();
+
+                        if (titulo == "Home Page")
+                        {
+                            titulo = "";
+                        }
+                    }
+                    <h3 class="col" id="label_cabecera">
+                        @titulo
+                    </h3>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - PresupuestosDepartamentos - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/fontawesome/js/all.js"></script>
+    <script src="~/lib/fontawesome/js/fontawesome.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="~/lib/datatables/DataTables-1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/DataTables-1.11.5/js/dataTables.dataTables.min.js"></script>
+    <script src="~/lib/datatables/DataTables-1.11.5/js/dataTables.jqueryui.min.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/datatables.min.js"></script>
+
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script src="~/lib/multi-select/js/jquery.multi-select.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.all.js"></script>
+
+    <script src="~/js/helper.js"></script>
+    <script src="~/js/configuracion/modulo_centro_coste.js"></script>
+    <script src="~/js/modulo_usuarios.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

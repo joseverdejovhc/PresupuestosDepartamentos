@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <h3 class="p-2" style="background: #eeee; border-style: solid;">Control Presupuestario</h3>
+    </div>
+    <div class="row mt-5">
+
+        <div class="col-4 mt-5">
+            <a class="enlace-index" asp-controller="Home" asp-action="Presupuesto">
+                <div class="card bg-light pastilla-index card-hover">
+                    <div class="row h-100 my-auto">
+                        <div class="col-md-4 justify-content-center align-self-center text-center mt-3 mt-md-0">
+                            <i class="fa fa-3x fa-money-bills rojo_nutrisens"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Presupuesto</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-4 mt-5">
+            <a class="enlace-index" asp-controller="Home" asp-action="Cierre">
+                <div class="card bg-light pastilla-index card-hover">
+                    <div class="row h-100 my-auto">
+                        <div class="col-md-4 justify-content-center align-self-center text-center mt-3 mt-md-0">
+                            <i class="fa fa-3x fa-door-closed rojo_nutrisens"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Previsión de Cierre</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-4 mt-5">
+            <a class="enlace-index" asp-controller="Configuracion" asp-action="Index">
+                <div class="card bg-light pastilla-index card-hover">
+                    <div class="row h-100 my-auto">
+                        <div class="col-md-4 justify-content-center align-self-center text-center mt-3 mt-md-0">
+                            <i class="fa fa-3x fa-gear rojo_nutrisens"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Configuración</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col-4 mt-5">
+            <a class="enlace-index" asp-controller="Home" asp-action="Explotacion">
+                <div class="card bg-light pastilla-index card-hover">
+                    <div class="row h-100 my-auto">
+                        <div class="col-md-4 justify-content-center align-self-center text-center mt-3 mt-md-0">
+                            <i class="fa fa-3x fa-rocket rojo_nutrisens"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Cuenta Explotacion</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-4 mt-5">
+            <a class="enlace-index" asp-controller="Home" asp-action="Extracontables">
+                <div class="card bg-light pastilla-index card-hover">
+                    <div class="row h-100 my-auto">
+                        <div class="col-md-4 justify-content-center align-self-center text-center mt-3 mt-md-0">
+                            <i class="fa fa-3x fa-database rojo_nutrisens"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Datos Explotación</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-4 mt-5">
+            <a class="enlace-index" asp-controller="Home" asp-action="Usuarios">
+                <div class="card bg-light pastilla-index card-hover">
+                    <div class="row h-100 my-auto">
+                        <div class="col-md-4 justify-content-center align-self-center text-center mt-3 mt-md-0">
+                            <i class="fa fa-3x fa-user rojo_nutrisens"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Usuarios</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+</div>

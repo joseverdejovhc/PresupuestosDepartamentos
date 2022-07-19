@@ -1,0 +1,74 @@
+﻿<div class="row mt-3">
+    <button id="btn_new_centro" class="btn btn-warning col-1 mb-1">Nuevo</button>
+    <table class="table table-striped datatable" id="tabla_centros" style="width: 100%;">
+        <thead class="bg-secondary text-white">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Activo Desde</th>
+                <th>Activo Hasta</th>
+                <th>Info Extracontable</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="modal_centros_coste" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Centro de Coste</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="operacion" hidden />
+                <input type="text" id="identificador" hidden />
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Centro de Coste</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="sel_centro_coste" name="centro_coste"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Tipo Centro de Coste</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="tipo_centro_coste" name="company"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Activo Desde</label>
+                    <div class="col-sm-8">
+                        <input type="number" id="dt_inicio" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Activo Hasta</label>
+                    <div class="col-sm-8">
+                        <input type="number" id="dt_fin" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Info Extracontable</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="info_extracontable">
+                            <option value="Si">Si</option>
+                            <option value="No" selected>No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="btn_modal_centro_coste" class="btn btn-primary">Guardar Centro de Coste</button>
+            </div>
+        </div>
+    </div>
+</div>
