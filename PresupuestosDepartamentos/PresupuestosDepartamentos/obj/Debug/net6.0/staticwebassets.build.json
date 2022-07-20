@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OhUve3XRO+BO6nr4Sg8Df+ZuTUifcmNyfBvZAlaQ13A=",
+  "Hash": "xr7IOkS4hhNkc3cpmIa8fbQdXtjHIS77hF0EkxMCiMM=",
   "Source": "PresupuestosDepartamentos",
   "BasePath": "_content/PresupuestosDepartamentos",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\configuracion\\modulo_centro_coste.js"
+    },
+    {
+      "Identity": "C:\\Projects\\Git\\PresupuestosDepartamentos\\PresupuestosDepartamentos\\PresupuestosDepartamentos\\wwwroot\\js\\configuracion\\modulo_naturaleza.js",
+      "SourceId": "PresupuestosDepartamentos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Git\\PresupuestosDepartamentos\\PresupuestosDepartamentos\\PresupuestosDepartamentos\\wwwroot\\",
+      "BasePath": "_content/PresupuestosDepartamentos",
+      "RelativePath": "js/configuracion/modulo_naturaleza.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\configuracion\\modulo_naturaleza.js"
     },
     {
       "Identity": "C:\\Projects\\Git\\PresupuestosDepartamentos\\PresupuestosDepartamentos\\PresupuestosDepartamentos\\wwwroot\\js\\helper.js",

@@ -12,7 +12,8 @@ namespace PresupuestosDepartamentos.Controllers
     {
 
         private AccesoDatos accesoDatos;
-
+        private string login;
+        private int perfil = 0;
         public ConfiguracionController()
         {
             accesoDatos = new AccesoDatos();
@@ -20,7 +21,19 @@ namespace PresupuestosDepartamentos.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            login = GetCookie();
+
+            perfil = GetPerfil(login);
+            ViewData["perfil"] = perfil;
+
+            if (perfil == 0)
+            {
+                return View("NoAccess");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         /**
@@ -96,6 +109,86 @@ namespace PresupuestosDepartamentos.Controllers
             return Content(response.ToString(), "application/json");
         }
 
+        /**
+         * TAB NATURALEZAS
+         */
+
+        public ActionResult CRUD_NATURALEZA(string operacion, string cod_naturaleza, string nombre, int tipo, int identificador, string info)
+        {
+            var response = new JObject();
+
+            var parameters = new[] {
+                new SqlParameter("@operacion", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = operacion },
+                new SqlParameter("@identificador", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = identificador },
+                new SqlParameter("@codigo", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = cod_naturaleza },
+                new SqlParameter("@nombre", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = nombre },
+                new SqlParameter("@info", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = info },
+                new SqlParameter("@mensaje", SqlDbType.VarChar, 200) {Direction = ParameterDirection.Output},
+                new SqlParameter("@success", SqlDbType.Int) {Direction = ParameterDirection.Output},
+                new SqlParameter("@tipo", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = tipo}
+            };
+
+            SqlCommand command = accesoDatos.EjecutarProcedimientoConParametros("CRUD_CONF_NATURALEZAS", CommandType.StoredProcedure, parameters);
+
+            if (command.Parameters["@success"].Value != null)
+            {
+                response["success"] = int.Parse(command.Parameters["@success"].Value.ToString());
+                response["mensaje"] = command.Parameters["@mensaje"].Value.ToString();
+            }
+
+            return Content(response.ToString(), "application/json");
+        }
+
+
+        public ActionResult getNaturalezas()
+        {
+            var response = new JObject();
+
+            var parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@operacion", SqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = "GETNATURALEZAS" });
+            var dataSet = accesoDatos.GetDataSet("CRUD_CONF_NATURALEZAS", parameters);
+
+            var dt_naturalezas = dataSet?.Tables?[0];
+            response["naturalezas"] = JsonConvert.SerializeObject(dt_naturalezas);
+
+            return Content(response.ToString(), "application/json");
+        }
+
+
+        private string GetCookie()
+        {
+            if (Request.Cookies["credencialesIntranetMVC"] != null && Request.Cookies["credencialesIntranetMVC"] != "")
+            {
+                login = Request.Cookies["credencialesIntranetMVC"].ToString();
+            }
+            else
+            {
+                Response.Redirect("http://dev.vegenat.net/Intranet2/Login?ReturnUrl=dev.vegenat.net%2presupuestotest%2&out=1");
+            }
+
+            return login;
+        }
+
+        private int GetPerfil(string login)
+        {
+            int perfil = 0;
+
+            var parameters = new[] {
+             new SqlParameter("@usuario", SqlDbType.NVarChar) { Direction = ParameterDirection.Input, Value = login },
+             new SqlParameter("@operacion", SqlDbType.NVarChar) { Direction = ParameterDirection.Input, Value = "GETPERMISO" }
+             };
+
+            SqlDataReader reader = accesoDatos.EjecutarReader("CRUD_USUARIOS", CommandType.StoredProcedure, parameters);
+
+            while (reader.Read())
+            {
+                perfil = Convert.ToInt32(reader["PERFIL"].ToString());
+            }
+            reader.Close();
+
+            return perfil;
+        }
 
 
     }
