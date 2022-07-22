@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="row mt-3">
+    <button id="btn_nueva_subnaturaleza" class="btn btn-warning col-1 mb-1">Nuevo</button>
+    <table class="table table-striped datatable" id="tabla_subnaturalezas" style="width: 100%;">
+        <thead class="bg-secondary text-white">
+            <tr>
+                <th>Código</th>
+                <th>Subnaturaleza</th>
+                <th>Naturaleza</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="modal_subnaturalezas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Naturaleza</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="operacion" hidden />
+                <input type="text" id="identificador" hidden />
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Código</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="cod_subnaturaleza" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Nombre</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="nombre_subnaturaleza" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Naturaleza</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="tipo_naturaleza"></select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="btn_modal_subnaturaleza" class="btn btn-primary">Guardar Subnaturaleza</button>
+            </div>
+        </div>
+    </div>
+</div>

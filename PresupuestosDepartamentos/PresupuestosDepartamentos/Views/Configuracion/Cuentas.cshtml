@@ -1,5 +1,107 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="row mt-3">
+    <button id="btn_nueva_cuenta" class="btn btn-warning col-1 mb-1">Nuevo</button>
+    <table class="table table-striped datatable" id="tabla_cuenta" style="width: 100%;">
+        <thead class="bg-secondary text-white">
+            <tr>
+                <th>Número</th>
+                <th>Descripción</th>
+                <th>Naturaleza</th>
+                <th>Aux2</th>
+                <th>Aux3</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modal_conf_cuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Cuenta</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="operacion" hidden />
+                <input type="text" id="identificador" hidden />
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Número</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="num_cuenta" class="form-control" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Nombre</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="nombre_cuenta" class="form-control" readonly/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Naturaleza</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="naturaleza"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Aux2</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="aux_2" readonly/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="centro_coste" class="col-form-label">Aux3</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="aux_3" readonly/>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="btn_modal_cuenta" class="btn btn-primary">Guardar Cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventana_add_cuenta" class="modal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Cuenta</h5>
+                <button type="button" class="close" data-bs-dismiss="modal">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped" id="tabla_cuentas_modal" style="width: 100%;">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                            <th>Número</th>
+                            <th>Descripción</th>
+                            <th>Aux2</th>
+                            <th>Aux3</th>
+                            <th>Añadir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-warning float-right text-white" data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

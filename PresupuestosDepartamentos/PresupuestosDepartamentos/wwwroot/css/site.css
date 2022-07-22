@@ -17,10 +17,18 @@ body {
     margin-bottom: 60px;
 }
 
+.navbar {
+    background-color: #f8f8f8 !important;
+    border-color: #e7e7e7
+}
+
 a.enlace-index {
     text-decoration: none;
     color: black;
     cursor: pointer;
+}
+.pastilla-index {
+    background-color: whitesmoke;
 }
 
 .nav-item-tabs {

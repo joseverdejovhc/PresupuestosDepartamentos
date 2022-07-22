@@ -155,6 +155,128 @@ namespace PresupuestosDepartamentos.Controllers
             return Content(response.ToString(), "application/json");
         }
 
+        public ActionResult getTiposCuenta()
+        {
+            var response = new JObject();
+
+            var parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@operacion", SqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = "GETTIPOSCUENTA" });
+            var dataSet = accesoDatos.GetDataSet("CRUD_CONF_NATURALEZAS", parameters);
+
+            var dt_tipos_cuenta = dataSet?.Tables?[0];
+            response["tipos_cuenta"] = JsonConvert.SerializeObject(dt_tipos_cuenta);
+
+            return Content(response.ToString(), "application/json");
+        }
+
+        /**
+         * TAB CUENTAS CONTABLES
+         */
+
+        public ActionResult getCuentasNoConfiguradas()
+        {
+            var response = new JObject();
+
+            var parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@operacion", SqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = "GETCUENTAS" });
+            var dataSet = accesoDatos.GetDataSet("CRUD_CUENTAS_CONTABLES", parameters);
+
+            var dt_cuentas = dataSet?.Tables?[0];
+            response["cuentas"] = JsonConvert.SerializeObject(dt_cuentas);
+
+            return Content(response.ToString(), "application/json");
+        }
+
+        public ActionResult getCuentasConfiguradas()
+        {
+            var response = new JObject();
+
+            var parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@operacion", SqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = "GETCUENTASCONFIGURADAS" });
+            var dataSet = accesoDatos.GetDataSet("CRUD_CUENTAS_CONTABLES", parameters);
+
+            var dt_cuentas = dataSet?.Tables?[0];
+            response["cuentas"] = JsonConvert.SerializeObject(dt_cuentas);
+
+            return Content(response.ToString(), "application/json");
+        }
+
+        public ActionResult CRUD_CUENTA(string operacion, string num_cuenta, string nombre, int naturaleza, int identificador, string aux2, string aux3)
+        {
+            var response = new JObject();
+
+            var parameters = new[] {
+                new SqlParameter("@operacion", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = operacion },
+                new SqlParameter("@identificador", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = identificador },
+                new SqlParameter("@num_cuenta", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = num_cuenta },
+                new SqlParameter("@nombre", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = nombre },
+                new SqlParameter("@aux_2", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = aux2 },
+                new SqlParameter("@aux_3", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = aux3 },
+                new SqlParameter("@mensaje", SqlDbType.VarChar, 200) {Direction = ParameterDirection.Output},
+                new SqlParameter("@success", SqlDbType.Int) {Direction = ParameterDirection.Output},
+                new SqlParameter("@naturaleza", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = naturaleza}
+            };
+
+            SqlCommand command = accesoDatos.EjecutarProcedimientoConParametros("CRUD_CUENTAS_CONTABLES", CommandType.StoredProcedure, parameters);
+
+            if (command.Parameters["@success"].Value != null)
+            {
+                response["success"] = int.Parse(command.Parameters["@success"].Value.ToString());
+                response["mensaje"] = command.Parameters["@mensaje"].Value.ToString();
+            }
+
+            return Content(response.ToString(), "application/json");
+        }
+
+        /**
+         * TAB SUBNATURALEZAS
+         */
+
+        public ActionResult getSubnaturalezas()
+        {
+            var response = new JObject();
+
+            var parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@operacion", SqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = "GETSUBNATURALEZAS" });
+            var dataSet = accesoDatos.GetDataSet("CRUD_SUBNATURALEZAS", parameters);
+
+            var dt_subnaturalezas = dataSet?.Tables?[0];
+            response["subnaturalezas"] = JsonConvert.SerializeObject(dt_subnaturalezas);
+
+            return Content(response.ToString(), "application/json");
+        }
+
+        public ActionResult CRUD_SUBNATURALEZA(string operacion, string cod_subnaturaleza, string nombre, int naturaleza, int identificador)
+        {
+            var response = new JObject();
+            var login = GetCookie();
+
+            var parameters = new[] {
+                new SqlParameter("@operacion", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = operacion },
+                new SqlParameter("@identificador", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = identificador },
+                new SqlParameter("@codigo", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = cod_subnaturaleza },
+                new SqlParameter("@nombre", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = nombre },
+                new SqlParameter("@usuario", SqlDbType.VarChar, 200) { Direction = ParameterDirection.Input, Value = login },
+                new SqlParameter("@mensaje", SqlDbType.VarChar, 200) {Direction = ParameterDirection.Output},
+                new SqlParameter("@success", SqlDbType.Int) {Direction = ParameterDirection.Output},
+                new SqlParameter("@naturaleza", SqlDbType.Int) {Direction = ParameterDirection.Input, Value = naturaleza}
+            };
+
+            SqlCommand command = accesoDatos.EjecutarProcedimientoConParametros("CRUD_SUBNATURALEZAS", CommandType.StoredProcedure, parameters);
+
+            if (command.Parameters["@success"].Value != null)
+            {
+                response["success"] = int.Parse(command.Parameters["@success"].Value.ToString());
+                response["mensaje"] = command.Parameters["@mensaje"].Value.ToString();
+            }
+
+            return Content(response.ToString(), "application/json");
+        }
+
 
         private string GetCookie()
         {

@@ -1,11 +1,13 @@
 ﻿var modulo_centro_coste = {
     init: () => {
-        modulo_centro_coste.putEventsOnButtons();
-        modulo_centro_coste.loadSelectores();
-        modulo_centro_coste.getCentrosConfigurados();
+        modulo_centro_coste.putEventsOnButtons();       
         var currentYear = new Date().getFullYear();
         $("#dt_inicio").prop("min", currentYear);
         $("#dt_fin").prop("max", currentYear);
+    },
+    loadData: () => {
+        modulo_centro_coste.loadSelectores();
+        modulo_centro_coste.getCentrosConfigurados();
     },
     putEventsOnButtons: () => {
         $("#btn_new_centro").on("click", function (e) {
@@ -115,6 +117,8 @@
             "dom": "frtip",
             data: centros,
             "paging": false,
+            "ordering": true,
+            order: [[0, 'desc']],
             "columns": [
                 { "data": "cod_centro_coste" },
                 { "data": "nombre" },

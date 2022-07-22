@@ -1,5 +1,5 @@
 ﻿<div class="row mt-3">
-    <button id="btn_new_centro" class="btn btn-warning col-1 mb-1">Nuevo</button>
+    <button id="btn_nueva_naturaleza" class="btn btn-warning col-1 mb-1">Nuevo</button>
     <table class="table table-striped datatable" id="tabla_naturalezas" style="width: 100%;">
         <thead class="bg-secondary text-white">
             <tr>
@@ -14,11 +14,11 @@
         </tbody>
     </table>
 </div>
-<div class="modal fade" id="modal_centros_coste" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal_naturalezas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Centro de Coste</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Naturaleza</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="centro_coste" class="col-form-label">Info Extracontable</label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="info_extracontable">
+                        <select class="form-control" id="info_extracontable_naturaleza">
                             <option value="Si">Si</option>
                             <option value="No" selected>No</option>
                         </select>
@@ -58,7 +58,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="btn_modal_naturaleza" class="btn btn-primary">Guardar Centro de Coste</button>
+                <button type="button" id="btn_modal_naturaleza" class="btn btn-primary">Guardar Naturaleza</button>
             </div>
         </div>
     </div>
