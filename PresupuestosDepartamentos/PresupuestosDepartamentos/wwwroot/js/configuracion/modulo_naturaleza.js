@@ -12,7 +12,7 @@
             e.preventDefault();
             $("#operacion").val("INSERT");
             $("#cod_naturaleza").val("");
-            $("#nombre_cuenta").val("");
+            $("#nombre").val("");
             $("#tipo_cuenta").val("");
             $("#info_extracontable").val("");
 

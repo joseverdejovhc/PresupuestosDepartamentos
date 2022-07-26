@@ -26,7 +26,8 @@ namespace PresupuestosDepartamentos.Controllers
             perfil = GetPerfil(login);
             ViewData["perfil"] = perfil;
 
-            if (perfil == 0)
+            //Solo accederá en el caso de ser admin
+            if (perfil != 1)
             {
                 return View("NoAccess");
             }

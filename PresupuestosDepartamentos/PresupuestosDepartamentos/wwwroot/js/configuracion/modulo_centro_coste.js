@@ -1,9 +1,7 @@
 ﻿var modulo_centro_coste = {
     init: () => {
         modulo_centro_coste.putEventsOnButtons();       
-        var currentYear = new Date().getFullYear();
-        $("#dt_inicio").prop("min", currentYear);
-        $("#dt_fin").prop("max", currentYear);
+        
     },
     loadData: () => {
         modulo_centro_coste.loadSelectores();
@@ -19,7 +17,10 @@
             $("#dt_inicio").val("");
             $("#dt_fin").val("");
             $("#info_extracontable").val("");
-
+            var currentYear = new Date().getFullYear();
+            $("#dt_inicio").val(currentYear);
+            $("#dt_inicio").prop("min", currentYear);
+            $("#dt_fin").prop("min", currentYear);
             $("#modal_centros_coste").modal("show");
         })
 
@@ -30,27 +31,33 @@
     },
     guardarConfCentroCoste: () => {
 
-        var data = {
-            operacion: $("#operacion").val(),
-            cod_centro_coste: $("#sel_centro_coste").val(),
-            nombre: $("#sel_centro_coste option:selected").text(),
-            tipo: $("#tipo_centro_coste").val(),
-            anio_inicio: $("#dt_inicio").val(),
-            anio_fin: $("#dt_fin").val(),
-            info: $("#info_extracontable").val(),
-            identificador: $("#identificador").val()
+        if ($("#sel_centro_coste").val() != "null" && $("#dt_inicio").val() >= 2022 && $("#dt_fin").val() >= 2022 && $("#tipo_centro_coste").val() != "") {
+            var data = {
+                operacion: $("#operacion").val(),
+                cod_centro_coste: $("#sel_centro_coste").val(),
+                nombre: $("#sel_centro_coste option:selected").text(),
+                tipo: $("#tipo_centro_coste").val(),
+                anio_inicio: $("#dt_inicio").val(),
+                anio_fin: $("#dt_fin").val(),
+                info: $("#info_extracontable").val(),
+                identificador: $("#identificador").val()
+            }
+
+            var url = helper.baseUrl + "/Configuracion/CRUD_CENTROS_COSTE";
+            helper.ajax(url, "POST", data).then(result => {
+                if (result.success == 1) {
+                    helper.mostrarAlertaOk(result.mensaje);
+                    helper.cerrarModal();
+                    modulo_centro_coste.getCentrosConfigurados();
+                } else {
+                    helper.mostrarAlertaError(result.mensaje);
+                }
+            });
+        } else {
+            helper.mostrarAlertaError("Hay datos incorrectos en el formulario");
         }
 
-        var url = helper.baseUrl + "/Configuracion/CRUD_CENTROS_COSTE";
-        helper.ajax(url, "POST", data).then(result => {
-            if (result.success == 1) {
-                helper.mostrarAlertaOk(result.mensaje);
-                helper.cerrarModal();
-                modulo_centro_coste.getCentrosConfigurados();
-            } else {
-                helper.mostrarAlertaError(result.mensaje);
-            }
-        });
+        
 
     },
     getCentrosConfigurados: () => {

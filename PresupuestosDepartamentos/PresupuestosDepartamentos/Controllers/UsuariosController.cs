@@ -40,6 +40,7 @@ namespace PresupuestosDepartamentos.Controllers
             
         }
 
+      
         public ActionResult loadModalUsuarios()
         {
             var response = new JObject();
@@ -50,6 +51,14 @@ namespace PresupuestosDepartamentos.Controllers
 
             var dt_centros = dataSet?.Tables?[0];
             response["centros"] = JsonConvert.SerializeObject(dt_centros);
+
+            parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@operacion", SqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = "GETDIRECTORIOACTIVO" });
+            dataSet = accesoDatos.GetDataSet("CRUD_USUARIOS", parameters);
+
+            var dt_usuarios = dataSet?.Tables?[0];
+            response["directorio"] = JsonConvert.SerializeObject(dt_usuarios);
 
             return Content(response.ToString(), "application/json");
         }

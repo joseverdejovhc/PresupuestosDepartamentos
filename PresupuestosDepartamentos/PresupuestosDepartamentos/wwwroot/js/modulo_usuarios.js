@@ -9,18 +9,34 @@
             e.preventDefault();
             $("#identificador").val("");
             $("#operacion").val("INSERT");
+            $("#sel_usuarios").val("");
             $("#nombre").val("");
             $("#usuario").val("");
             $("#mail").val("");
             $("#perfil").val("");
             $("#sel_centros_coste").val("");
+            $('#sel_centros_coste').multiSelect('select', []);
+            $("#nombre_usuario").show();
+            //$("#sel_centros_coste").multiSelect('refresh');
             $("#modal_usuarios").modal("show");
         })
 
         $("#btn_modal_usuarios").on("click", function (e) {
             e.preventDefault();
             modulo_usuarios.guardarUsuario();
+
         })
+
+        $("#sel_usuarios").on("change", function (e) {
+            e.preventDefault();
+            var usuario = JSON.parse($("#sel_usuarios").val());
+
+            $("#nombre").val(usuario.nombre);
+            $("#mail").val(usuario.email);
+            $("#usuario").val(usuario.id_usuario);
+        })
+
+        
 
     },
     getUsuarios: () => {
@@ -109,6 +125,7 @@
         helper.ajax(url, "POST", data).then(result => {
             var centros = JSON.parse(result.centros);
             $('#sel_centros_coste').multiSelect('select', centros);
+            $("#sel_centros_coste").multiSelect('refresh');
         });
 
         $("#identificador").val(row.id);
@@ -117,8 +134,8 @@
         $("#usuario").val(row.username);
         $("#mail").val(row.mail);
         $("#perfil").val(row.num_perfil);
-
-
+        $("#sel_usuarios").hide();
+        $("#nombre_usuario").hide();
         $("#modal_usuarios").modal("show");
 
     },
@@ -126,12 +143,25 @@
         var url = helper.baseUrl + "/Usuarios/loadModalUsuarios";
         helper.ajax(url, "GET").then(result => {
             var centros = JSON.parse(result.centros);
+            var directorio = JSON.parse(result.directorio);
+
             $("#sel_centros_coste option").remove();
             centros.forEach((centro) => {
                 $('#sel_centros_coste').append(new Option(centro.cod_centro_coste + "-" + centro.nombre, centro.id));
             });
-            $('#sel_centros_coste').multiSelect()
+            $('#sel_centros_coste').multiSelect();
 
+            $("#sel_usuarios option").remove();
+            directorio.forEach((usuario) => {
+                $('#sel_usuarios').append(new Option(usuario.id_usuario, JSON.stringify(usuario)));
+            });
+        
+            $("#sel_usuarios").select2({
+                language: "es",
+                allowClear: false,
+                placeholder: "Seleccione...",
+                dropdownParent: $('#modal_usuarios')
+            });
         });
     }
 }
