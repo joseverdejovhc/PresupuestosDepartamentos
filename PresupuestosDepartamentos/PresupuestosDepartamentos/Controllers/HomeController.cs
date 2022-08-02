@@ -72,7 +72,7 @@ namespace PresupuestosDepartamentos.Controllers
             }
             else
             {
-                Response.Redirect("http://dev.vegenat.net/Intranet2/Login?ReturnUrl=dev.vegenat.net%2presupuestotest%2&out=1");
+                Response.Redirect("http://dev.vegenat.net/Intranet2/Login?ReturnUrl=dev.vegenat.net%presupuestosdepartamentostest%2&out=1");
             }
 
             return login;
