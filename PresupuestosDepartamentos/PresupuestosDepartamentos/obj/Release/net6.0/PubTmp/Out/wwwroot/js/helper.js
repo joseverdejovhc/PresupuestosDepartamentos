@@ -1,5 +1,6 @@
 ﻿var array_ajax = []
 var helper = {
+    ///PresupuestosDepartamentosTest
     baseUrl: '/PresupuestosDepartamentosTest',
     ajax: async (url, type, data = null) => {
         return new Promise((resolve, reject) => {

@@ -102,7 +102,7 @@
         }
 
         $('#tabla_subnaturalezas').DataTable({
-            "dom": "frtip",
+            "dom": "Bfrtip",
             data: subnaturalezas,
             "paging": false,
             "ordering": true,
@@ -110,11 +110,32 @@
             "columns": [
                 { "data": "cod_subnaturaleza" },
                 { "data": "nombre" },
-                { "data": "naturaleza" },
                 {
                     render: function (data, type, row, meta) {
                         return `<a href="#" class="btn btn-light btn-sm" onclick='modulo_subnaturalezas.editar_subnaturaleza(` + JSON.stringify(row) + `);'><i class="fa fa-edit"></i></a>
                             <a href="#" class="btn btn-light btn-sm" onclick='modulo_subnaturalezas.borrar_subnaturaleza("` + row.id + `");'><i class="fa fa-trash"></i></a>`;
+                    }
+                }
+            ],
+            buttons: [
+                {
+                    text: '<i class="fa fa-file-excel fa-lg" title="Excel" aria-hidden="true"></i> Excel',
+                    // title: 'Grupo: ' + $('.ListGrupo option:selected').text() + '     Empresa: ' + $('.ListEmpresa option:selected').text(),
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: 'th:not(:last-child)',
+                        format: {
+                            body: function (data, row, column, node) {
+                                var data = String(data);
+
+                                if ($.isNumeric(data.replace(/<.*?\>/, '').replace(/<\/.*?>/, '').replace(/[.]/g, '').replace(/[,]/g, '.'))) {
+                                    return data.replace(/<.*?\>/, '').replace(/<\/.*?>/, '').replace(/[.]/g, '').replace(/[,]/g, '.');
+                                } else {
+                                    // Elimina espacios en blanco y etiquetas html que añade en los Template Field del Gridview
+                                    return data.replace(/&nbsp;/g, '').replace(/<.*?\>/, '').replace(/<\/.*?>/, '');
+                                }
+                            }
+                        }
                     }
                 }
             ]

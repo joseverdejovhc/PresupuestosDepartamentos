@@ -24,6 +24,8 @@
 
             modulo_naturaleza.guardarNaturaleza();
         })
+
+        $("#info_extracontable_naturaleza").val("No");
     },
     loadTiposCuenta: () => {
         var url = helper.baseUrl + "/Configuracion/getTiposCuenta";
@@ -107,7 +109,7 @@
         }
 
         $('#tabla_naturalezas').DataTable({
-            "dom": "frtip",
+            "dom": "Bfrtip",
             data: naturalezas,
             "paging": false,
             "ordering": true,
@@ -121,6 +123,28 @@
                     render: function (data, type, row, meta) {
                         return `<a href="#" class="btn btn-light btn-sm" onclick='modulo_naturaleza.editar_naturaleza(` + JSON.stringify(row) + `);'><i class="fa fa-edit"></i></a>
                             <a href="#" class="btn btn-light btn-sm" onclick='modulo_naturaleza.borrar_naturaleza("` + row.id + `");'><i class="fa fa-trash"></i></a>`;
+                    }
+                }
+            ],
+            buttons: [
+                {
+                    text: '<i class="fa fa-file-excel fa-lg" title="Excel" aria-hidden="true"></i> Excel',
+                    // title: 'Grupo: ' + $('.ListGrupo option:selected').text() + '     Empresa: ' + $('.ListEmpresa option:selected').text(),
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: 'th:not(:last-child)',
+                        format: {
+                            body: function (data, row, column, node) {
+                                var data = String(data);
+
+                                if ($.isNumeric(data.replace(/<.*?\>/, '').replace(/<\/.*?>/, '').replace(/[.]/g, '').replace(/[,]/g, '.'))) {
+                                    return data.replace(/<.*?\>/, '').replace(/<\/.*?>/, '').replace(/[.]/g, '').replace(/[,]/g, '.');
+                                } else {
+                                    // Elimina espacios en blanco y etiquetas html que añade en los Template Field del Gridview
+                                    return data.replace(/&nbsp;/g, '').replace(/<.*?\>/, '').replace(/<\/.*?>/, '');
+                                }
+                            }
+                        }
                     }
                 }
             ]

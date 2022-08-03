@@ -16,6 +16,8 @@
             $("#aux_2").val("");
             $("#aux_3").val("");
             $("#aux_3").val("");
+            $("#naturaleza").val("null");
+
             $("#ventana_add_cuenta").modal("show");
         })
 
@@ -128,7 +130,7 @@
         }
 
         $('#tabla_cuenta').DataTable({
-            "dom": "frtip",
+            "dom": "Bfrtip",
             data: cuentas,
             "paging": true,
             "ordering": true,
@@ -145,8 +147,31 @@
                         <a href="#" class="btn btn-light btn-sm" onclick='modulo_cuentas.borrar_cuenta(` + row.id + `);'><i class="fa fa-trash"></i></a>`;
                     }
                 }
+            ],
+            buttons: [
+                {
+                    text: '<i class="fa fa-file-excel fa-lg" title="Excel" aria-hidden="true"></i> Excel',
+                    // title: 'Grupo: ' + $('.ListGrupo option:selected').text() + '     Empresa: ' + $('.ListEmpresa option:selected').text(),
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: 'th:not(:last-child)',
+                        format: {
+                            body: function (data, row, column, node) {
+                                var data = String(data);
+
+                                if ($.isNumeric(data.replace(/<.*?\>/, '').replace(/<\/.*?>/, '').replace(/[.]/g, '').replace(/[,]/g, '.'))) {
+                                    return data.replace(/<.*?\>/, '').replace(/<\/.*?>/, '').replace(/[.]/g, '').replace(/[,]/g, '.');
+                                } else {
+                                    // Elimina espacios en blanco y etiquetas html que añade en los Template Field del Gridview
+                                    return data.replace(/&nbsp;/g, '').replace(/<.*?\>/, '').replace(/<\/.*?>/, '');
+                                }
+                            }
+                        }
+                    }
+                }
             ]
         });
+
 
     },
     loadDatatableModal: (cuentas) => {
@@ -171,6 +196,8 @@
             ],
             "ordering": true
         });
+
+
     }
 
 }
